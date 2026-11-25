@@ -1,0 +1,7 @@
+data/
+model/
+tests/fake_paysim.csv
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
