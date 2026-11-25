@@ -63,7 +63,18 @@ curl -X POST http://127.0.0.1:8000/score -H "Content-Type: application/json" \
 
 `train.py` writes `model/metrics.json` with: fraud caught (%), precision, false alarms per 1,000 genuine payments, and a comparison with PaySim's built-in rule.
 
-<!-- Paste your numbers from model/metrics.json here after training on PaySim. -->
+Trained on PaySim payments up to hour 500, tested on 124,630 later payments (2,652 frauds) the model never saw.
+
+| Risk score threshold | Fraud caught | Precision | False alarms per 1,000 genuine |
+
+ 30 (verify) | 99.92% | 99.74% | 0.06 
+ 50 | 99.92% | 99.77% | 0.05 
+ 70 (hold) | 99.92% | 99.89% | 0.02 
+PaySim built-in rule | 0.38% | – | 0.00 
+
+Average precision: 0.9999
+
+> PaySim is synthetic data with simpler fraud patterns than real UPI, so these numbers show the pipeline works, not real-world accuracy. Real bank data will be harder.
 
 ## Data and privacy
 
